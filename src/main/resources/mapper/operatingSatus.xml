@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lin.dao.OperatingStatusDao">
+
+    <!--查询指标体系准则层元素，用于打分并计算权重 -->
+    <select id="selectIndicator_level" resultType="com.lin.domain.Value">
+        select Indicator_level as VALUE from t_yxzt_indexsystem where criterion_level=#{selectName,jdbcType=VARCHAR}
+    </select>
+
+
+    <!-- 根据用户选择，更新权重值-->
+    <select id="updateComputeWeight" resultType="com.lin.domain.Value">
+        update t_yxzt_indexsystem set indicator_value =#{updateValue,jdbcType=VARCHAR} where indicator_level=#{updateName,jdbcType=VARCHAR}
+    </select>
+
+    <!--查询权重值已经有的值，对比观察是否更新 -->
+    <select id="SelectOldWeightValue" resultType="com.lin.domain.OldWeightValue" >
+        select indicator_level as name ,indicator_value as value from t_yxzt_indexsystem where criterion_level=#{criterionName,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>

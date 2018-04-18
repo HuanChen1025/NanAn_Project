@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>电网结构专家打分</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.bootcss.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.7.0/echarts.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?73c27e26f610eb3c9f3feb0c75b03925";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="col-sm-offset-1 col-sm-10">
+<button id="submit">点击我加载表格</button>
+<script type="text/javascript">
+    //获取当前项目的路径
+    var urlRootContext = (function() {
+        var strPath = window.document.location.pathname;
+        var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
+        return postPath;
+    })();
+    //异步加载数据
+    var URL1 = urlRootContext + "/user/selectCriterionName"; //请求的网址
+
+    $('#submit').click(function() {
+        var Name = "电网结构";
+        var reqParams = { 'selectName': Name};
+        $.ajax({
+            type: "POST",
+            url: URL1,
+            cache: false,
+            data: reqParams,
+            async: false,
+            dataType: "json",
+            traditional: true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
+            success: function(data) {
+
+
+            }});
+    })
+
+    </script>
+
+<table class="table table-striped" >
+    <caption>条纹表格布局</caption>
+    <thead>
+    <tr>
+        <th width="20%"></th>
+        <th>10kV线路供电半径</th>
+        <th>10kV架空线路平均分数段</th>
+        <th>10kV配电网标准结构占比</th>
+        <th>10kV线路联络率</th>
+        <th>10kV线路N-1通过率</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>10kV线路供电半径</th>
+        <td></td>
+        <td><input class="col-sm-6" placeholder="请输入姓"></td>
+        <td><input class="col-sm-6"></td>
+        <td><input class="col-sm-2"></td>
+        <td><input class="col-sm-2"></td>
+    </tr>
+    <tr>
+        <th>10kV架空线路平均分数段</th>
+        <td><label class="col-sm-6" placeholder="">无需输入</label></td>
+        <td></td>
+        <td><input></td>
+        <td><input></td>
+        <td><input></td>
+    </tr>
+    <tr>
+        <th>10kV配电网标准结构占比</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input></td>
+        <td><input></td>
+    </tr>
+    <tr>
+        <th>10kV线路联络率</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input></td>
+    </tr>
+    <tr>
+        <th>10kV线路N-1通过率</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>

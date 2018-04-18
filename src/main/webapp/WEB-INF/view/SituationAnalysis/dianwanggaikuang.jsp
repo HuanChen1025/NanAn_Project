@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html lang="ch">
+
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.bootcss.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/echarts/3.7.0/echarts.js"></script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?73c27e26f610eb3c9f3feb0c75b03925";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        <style type="text/css">
+        .table th,
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>2016年南岸各类供电区域概况表</h2>
+            <br>
+            <table class="table table-bordered  table-striped">
+                <thead>
+                    <tr class="info">
+                        <th>供电区域类型</th>
+                        <th>供电面积（km2）</th>
+                        <th>全社会用电量（亿kWh）</th>
+                        <th>全社会最大负荷（MW）</th>
+                        <th>负荷密度（MW/km2）</th>
+                        <th>低压用户数（万户）</th>
+                        <th>二级以上重要用户数（户）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A+</td>
+                        <td>10.5</td>
+                        <td>18.362875</td>
+                        <td>434.3</td>
+                        <td>41.362</td>
+                        <td>26.04</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>58.4</td>
+                        <td>28.521716</td>
+                        <td>884.6</td>
+                        <td>15.147</td>
+                        <td>52.52</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>128.1</td>
+                        <td>8.599382</td>
+                        <td>256.8</td>
+                        <td>2.0047</td>
+                        <td>11.22</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>363.42</td>
+                        <td>4.205069</td>
+                        <td>90.3</td>
+                        <td>0.2485</td>
+                        <td>0.2485</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>所有区域</td>
+                        <td>560.42</td>
+                        <td>5.9689042</td>
+                        <td>1666</td>
+                        <td>2.973</td>
+                        <td>104.75</td>
+                        <td>18</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="chart1" style="height:400px;"></div>
+        </div>
+        <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('chart1'));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '2016年南岸各类供电区域概况'
+            },
+            tooltip: {
+                trigger: 'axis',
+                //以行为单位给数据添加单位
+                formatter: function(datas) {
+                    var res = datas[0].name + '<br/>', //代表的是横坐标的数据
+                        val;
+                    for (var i = 0, length = datas.length; i < length; i++) { //datas.length影响加入单位的行
+                        val = (datas[i].value) + ' ';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+                },
+                axisPointer: {
+                    type: 'cross'
+                },
+                backgroundColor: '#7FFFD4',
+                borderWidth: 1,
+                borderColor: '#ccc',
+                padding: 10,
+                textStyle: {
+                    color: '#000'
+                },
+            },
+
+            legend: {
+                data: ['A+区域', 'A区域', 'B区域', 'D区域', '所有区域']
+            },
+            xAxis: {
+                axisLabel: {
+                    interval: 0,
+
+                },
+
+                data: ['供电面积（km2）', '全社会用电量（亿kWh）', '全社会最大负荷（MW）', '负荷密度（MW/km2）', '低压用户数（万户）', '低压用户数（万户）']
+            },
+            yAxis: {},
+            series: [{
+                    name: 'A+区域',
+                    type: 'line',
+                    data: [10.5, 18.362875, 434.3, 41.362, 26.04, 7]
+                },
+                {
+                    name: 'A区域',
+                    type: 'line',
+                    data: [58.4, 28.521716, 884.6, 15.147, 52.52, 5]
+                },
+                {
+                    name: 'B区域',
+                    type: 'line',
+                    data: [128.1, 8.599382, 256.8, 2.0047, 11.22, 6]
+                },
+                {
+                    name: 'D区域',
+                    type: 'line',
+                    data: [363.42, 4.205069, 90.3, 0.2485, 14.97, 0]
+                },
+                {
+                    name: '所有区域',
+                    type: 'line',
+                    data: [560.42, 59.689042, 1666, 2.973, 104.75, 18]
+                }
+            ]
+
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option);
+        </script>
+    </body>
+
+    </html>

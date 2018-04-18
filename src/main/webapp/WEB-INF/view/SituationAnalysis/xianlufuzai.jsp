@@ -1,0 +1,198 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html lang="ch">
+
+    <head>
+        <title>线路负载</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.bootcss.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/echarts/3.7.0/echarts.js"></script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?73c27e26f610eb3c9f3feb0c75b03925";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        <style type="text/css">
+        .table th,
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>2016年中压线路负载率超过70%的线路</h2>
+            <br>
+            <table class="table table-bordered  table-striped">
+                <thead>
+                    <tr class="info">
+                        <th>序号</th>
+                        <th>线路名称</th>
+                        <th>所属变电站</th>
+                        <th>装接配变容量（kVA）</th>
+                        <th>限额电流（A）</th>
+                        <th>典型日最大时刻电流（A）</th>
+                        <th>线路负载率（%）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>洲泉</td>
+                        <td>龙洲湾</td>
+                        <td>15275</td>
+                        <td>424</td>
+                        <td>298</td>
+                        <td>70.3</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>石勤</td>
+                        <td>鸡冠石</td>
+                        <td>16055</td>
+                        <td>581</td>
+                        <td>415</td>
+                        <td>71.4</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>垭水</td>
+                        <td>黄桷垭</td>
+                        <td>17135</td>
+                        <td>424</td>
+                        <td>329</td>
+                        <td>77.6</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>纳铜</td>
+                        <td>纳溪沟</td>
+                        <td>16405</td>
+                        <td>424</td>
+                        <td>335</td>
+                        <td>79.0</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>沱岔</td>
+                        <td>李家沱</td>
+                        <td>17450</td>
+                        <td>433</td>
+                        <td>321</td>
+                        <td>74.1</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>鹿镇</td>
+                        <td>鹿角</td>
+                        <td>16925</td>
+                        <td>353</td>
+                        <td>273</td>
+                        <td>77.3</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>棠界</td>
+                        <td>海棠</td>
+                        <td>12520</td>
+                        <td>520</td>
+                        <td>381</td>
+                        <td>73.3</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>桥流</td>
+                        <td>桥口坝</td>
+                        <td>15235</td>
+                        <td>368</td>
+                        <td>268</td>
+                        <td>72.8</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>桥跳</td>
+                        <td>桥口坝</td>
+                        <td>18685</td>
+                        <td>368</td>
+                        <td>282</td>
+                        <td>76.6</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>五二</td>
+                        <td>五步</td>
+                        <td>13370</td>
+                        <td>424</td>
+                        <td>321</td>
+                        <td>75.7</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>龙惠</td>
+                        <td>迎龙</td>
+                        <td>16905</td>
+                        <td>466</td>
+                        <td>344</td>
+                        <td>73.8</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>天惠</td>
+                        <td>天文</td>
+                        <td>16125</td>
+                        <td>466</td>
+                        <td>351</td>
+                        <td>75.3</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>天螺</td>
+                        <td>天文</td>
+                        <td>19495</td>
+                        <td>466</td>
+                        <td>338</td>
+                        <td>72.5</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>峡广</td>
+                        <td>峡口</td>
+                        <td>16250</td>
+                        <td>424</td>
+                        <td>327</td>
+                        <td>77.1</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>阳迎</td>
+                        <td>广阳</td>
+                        <td>18880</td>
+                        <td>321</td>
+                        <td>3235</td>
+                        <td>73.2</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>阳镇</td>
+                        <td>广阳</td>
+                        <td>17690</td>
+                        <td>368</td>
+                        <td>288</td>
+                        <td>78.3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+    </html>
